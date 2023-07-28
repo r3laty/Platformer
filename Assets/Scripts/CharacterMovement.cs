@@ -12,7 +12,7 @@ public class CharacterMovement : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody2D>();
         characterAnime = GetComponent<Animator>();
-        controller = GetComponent<CharacterController>();   
+        controller = GetComponent<CharacterController>(); 
     }
 
     public void Move(Vector2 moovingVector, float speed)
@@ -30,6 +30,7 @@ public class CharacterMovement : MonoBehaviour
             transform.localScale = new Vector3(-1.5f, 1.5f, 1.5f);
         }
     }
+
     public void WalkAnimation()
     {
         if(controller.horizontal > 0)
@@ -52,20 +53,20 @@ public class CharacterMovement : MonoBehaviour
         {
             characterAnime.SetBool("walk", false);
             characterAnime.SetBool("run", true);
-            controller._speed = 10;
+            controller.speed = 10;
         }
 
         if(controller.horizontal < 0 && Input.GetKeyDown(KeyCode.LeftShift))
         {
             characterAnime.SetBool("walk", false);
             characterAnime.SetBool("run", true);
-            controller._speed = 10;
+            controller.speed = 10;
         }
         if(controller.horizontal == 0 || Input.GetKeyUp(KeyCode.LeftShift))
         {
             characterAnime.SetBool("walk", false);
             characterAnime.SetBool("run", false);
-            controller._speed = 5;
+            controller.speed = 5;
         }
 
     }
