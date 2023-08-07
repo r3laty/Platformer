@@ -6,6 +6,13 @@ TagManager:
   tags:
   - Ground
   - Wall
+  - LookUp
+  - Ladder
+  - Lever
+  - TriggerOfExplosion
+  - Boom
+  - KeyCard
+  - EndGame
   layers:
   - Default
   - TransparentFX

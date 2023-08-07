@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,18 +7,22 @@ public class CharacterMovement : MonoBehaviour
 {
     private Rigidbody2D playerRb;
     private CharacterController controller;
+    private CharacterWallSlide  wallSlide;
     private Animator characterAnime;
+    private AnimatorControllerParameter[] animator_parametres;
 
-    private void Start() 
+    private void Awake() 
     {
         playerRb = GetComponent<Rigidbody2D>();
         characterAnime = GetComponent<Animator>();
+        animator_parametres = characterAnime.parameters;
         controller = GetComponent<CharacterController>(); 
+        wallSlide = GetComponent<CharacterWallSlide>();
     }
 
-    public void Move(Vector2 moovingVector, float speed)
+    public void Move(Vector2 movingVector, float speed)
     {
-        playerRb.velocity = new Vector2(moovingVector.x * speed, playerRb.velocity.y);
+        playerRb.velocity = new Vector2(movingVector.x * speed, playerRb.velocity.y);
     }
     public void Flip()
     {
@@ -31,43 +36,30 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    public void WalkAnimation()
-    {
-        if(controller.horizontal > 0)
-        {
-            characterAnime.SetBool("walk", true);
-        }
-        if(controller.horizontal < 0)
-        {
-            characterAnime.SetBool("walk", true);
-        }
-        if(controller.horizontal == 0 || Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            characterAnime.SetBool("walk", false);
-            characterAnime.SetBool("run", false);
-        } 
-    }
     public void RunAnimation()
     {
-        if(controller.horizontal > 0 && Input.GetKeyDown(KeyCode.LeftShift))
+        if(controller.horizontal > 0.9f && !wallSlide.wall)
         {
-            characterAnime.SetBool("walk", false);
             characterAnime.SetBool("run", true);
-            controller.speed = 10;
+            controller.speed = 8;
         }
 
-        if(controller.horizontal < 0 && Input.GetKeyDown(KeyCode.LeftShift))
+        if(controller.horizontal < -0.9 && !wallSlide.wall)
         {
-            characterAnime.SetBool("walk", false);
             characterAnime.SetBool("run", true);
-            controller.speed = 10;
+            controller.speed = 8;
         }
-        if(controller.horizontal == 0 || Input.GetKeyUp(KeyCode.LeftShift))
+        if(controller.horizontal == 0)
         {
-            characterAnime.SetBool("walk", false);
-            characterAnime.SetBool("run", false);
-            controller.speed = 5;
-        }
+            foreach(AnimatorControllerParameter parameter in animator_parametres)   //Disable animations
+            {
+                if(parameter.type == AnimatorControllerParameterType.Bool)
+                {
+                    characterAnime.SetBool(parameter.name, false);
+                }
+            }
 
+            controller.speed = 8;
+        }
     }
 }

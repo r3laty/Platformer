@@ -1,101 +1,117 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-
+//This script is input manager. He is in charge for input from user.
 public class CharacterController : MonoBehaviour
 {
-    private Rigidbody2D playerRb;
-    private CharacterJump jump;
-    private CharacterWallSlide wallSlide;
-    private CharacterMovement movement;
+    private Animator _playerAnime;
+    private Rigidbody2D _playerRb;
+    private CharacterJump _jump;
+    private CharacterWallSlide _wallSlide;
+    private CharacterMovement _movement;
     private bool isJumped;
     private bool isExtraJumped;
     private bool allow;
-    private bool wallJump;
-    [SerializeField] private float _jumpForce = 5;
+    private bool walljump;
+    private bool learnMore;
+    [SerializeField] private float walljumpForce = 5;
+    [SerializeField] private float jumpForce = 5;
+    [SerializeField] private GameObject aboutItemMenu;
+    [SerializeField] private BringKeyCard keyCardScript;
+    [SerializeField] private TextMeshProUGUI raisedText;
     [HideInInspector] public float horizontal;
     [HideInInspector] public float speed = 5;
+    [HideInInspector] public Vector2 movingVec;
 
-    private void Start() 
+    private void Awake() 
     {
-        playerRb = GetComponent<Rigidbody2D>();
-        jump = GetComponent<CharacterJump>();
-        wallSlide = GetComponent<CharacterWallSlide>();
-        movement = GetComponent<CharacterMovement>(); 
+        _playerAnime = GetComponent<Animator>();
+        _playerRb = GetComponent<Rigidbody2D>();
+        _jump = GetComponent<CharacterJump>();
+        _wallSlide = GetComponent<CharacterWallSlide>();
+        _movement = GetComponent<CharacterMovement>(); 
     }
     private void Update() 
     {
-        movement.RunAnimation();
-        movement.WalkAnimation();
-        if (Input.GetKeyDown(KeyCode.Space) && jump.isGround)
+        _movement.RunAnimation();
+        
+        //_jump
+        if (Input.GetKeyDown(KeyCode.Space) && _jump.isGround)
         {
+            _playerAnime.SetBool("jump", true);
             isJumped = true;
             allow = true;
         }
+        //double _jump
         else if(allow && Input.GetKeyDown(KeyCode.Space))
         {
+            _playerAnime.SetBool("doubleJump", true);
             isExtraJumped = true;
             allow = false;
         }
-        else if(Input.GetKeyDown(KeyCode.Space) && wallSlide.wall)
+        //wall _jump
+        else if(Input.GetKeyDown(KeyCode.Space) && _wallSlide.wall)
         {
-            wallJump = true;
+            walljump = true;
         }
 
-        // else if(Input.GetKeyDown(KeyCode.Space) && wallSlide.wallJump)
-        // {
-        //     Debug.Log("Wall jump");
-        //     if(transform.localScale.x == 1.5f)
-        //     {
-        //         transform.localScale = new Vector3(-1.5f, 1.5f, 1.5f);
-        //         wallJump = true;
-        //     }
-        //     else if (transform.localScale.y == -1.5f)
-        //     {
-        //         transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        //         wallJump = true;
-        //     }
-        // }
+        //raising text activate
+        if(keyCardScript.pickedUp)
+        {
+            StartCoroutine(RaisingTextActivating());
+            learnMore = true;
+        }
+
+        //about item menu
+        if (learnMore && Input.GetKeyDown(KeyCode.Tab))
+        {
+            aboutItemMenu.SetActive(true);
+        }
+        else if (learnMore && Input.GetKeyUp(KeyCode.Tab))
+        {
+            aboutItemMenu.SetActive(false);
+        }
     }
     private void FixedUpdate() 
     {
         horizontal = Input.GetAxis("Horizontal");  
-        Vector2 moovingVector = new Vector2(horizontal, transform.position.y);
+        movingVec = new Vector2(horizontal, transform.position.y);
 
-        movement.Move(moovingVector, speed);
+        _movement.Move(movingVec, speed);
 
-        movement.Flip();
+        _movement.Flip();
 
         if(isJumped)
         {
-            jump.Jump(_jumpForce);
+            _jump.Jump(jumpForce);
             isJumped = false;
+            _playerAnime.SetBool("jump", false);
         }
-        if(isExtraJumped)
+        else if(isExtraJumped)
         {
-            jump.Jump(_jumpForce);
+            _jump.Jump(jumpForce);
             isExtraJumped = false;
+            _playerAnime.SetBool("doubleJump", false);   
         }
-        else if(wallJump)
+        else if(walljump)
         {
-            playerRb.velocity = new Vector2(moovingVector.x * speed, wallSlide.slideSpeed);
-            if(transform.localScale.x == 1.5f)
-            {
-                transform.localScale = new Vector3(-1.5f, 1.5f, 1.5f);
-                playerRb.velocity = new Vector2(playerRb.velocity.x, _jumpForce);
-            }
-            else if(transform.localScale.x == -1.5f)
-            {
-                transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-                playerRb.velocity = new Vector2(playerRb.velocity.x, _jumpForce);
-                Debug.Log("Flip on +");
-            }
-            Debug.Log("Walljumped");
-            wallJump = false;
+            _playerRb.velocity = new Vector2(0, Vector2.up.y * walljumpForce);
+            _wallSlide.wall = false;
+            walljump = false;
         }
     }
-    // private void DoubleJump()
-    // {
-    //     jump.Jump(_jumpForce);
-    // }
+    private IEnumerator RaisingTextActivating()
+    {
+        raisedText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(1);
+        Vector3 newPosition = new Vector3(-221.9f, -129.7f, 0);
+        Vector2 newScale = new Vector2(209.9684f, 30.1511f);
+        
+        raisedText.text = "ключ карта";
+        raisedText.fontSize = 24;
+        raisedText.transform.localPosition = newPosition;
+        raisedText.rectTransform.sizeDelta = newScale;
+    }
 }
