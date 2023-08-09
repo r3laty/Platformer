@@ -1,10 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SliderJointController : MonoBehaviour
 {
     [SerializeField] private SliderJoint2D[] platforms;
+    [SerializeField] private float motorSpeed = 2f;
     private bool upperLimit_firstPlatform;
 
     private bool upperLimit_secondPlatform;
@@ -19,9 +19,7 @@ public class SliderJointController : MonoBehaviour
         //1st platform
         if(!upperLimit_firstPlatform)
         {
-            JointMotor2D firstPlatformMotor = platforms[0].motor;
-            firstPlatformMotor.motorSpeed = 2;
-            platforms[0].motor = firstPlatformMotor;
+            SetMotorSpeed(1);
             if(platforms[0].limitState == JointLimitState2D.UpperLimit)
             {
                 upperLimit_firstPlatform = true;
@@ -29,21 +27,17 @@ public class SliderJointController : MonoBehaviour
         }
         else if(upperLimit_firstPlatform)
         {
-            JointMotor2D firstPlatformMotor = platforms[0].motor;
-            firstPlatformMotor.motorSpeed = -2;
-            platforms[0].motor = firstPlatformMotor;
+            SetNegativeMotorSpeed(1);
             if(platforms[0].limitState == JointLimitState2D.LowerLimit)
             {
                 upperLimit_firstPlatform = false;
             }
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.2f);
         //2nd platform
         if(!upperLimit_secondPlatform)
         {
-            JointMotor2D secondPlatformMotor = platforms[1].motor;
-            secondPlatformMotor.motorSpeed = 2;
-            platforms[1].motor = secondPlatformMotor;
+            SetMotorSpeed(2);
             if(platforms[1].limitState == JointLimitState2D.UpperLimit)
             {
                 upperLimit_secondPlatform = true;
@@ -51,21 +45,17 @@ public class SliderJointController : MonoBehaviour
         }
         else if(upperLimit_secondPlatform)
         {
-            JointMotor2D secondPlatformMotor = platforms[1].motor;
-            secondPlatformMotor.motorSpeed = -2;
-            platforms[1].motor = secondPlatformMotor;
+            SetNegativeMotorSpeed(2);
             if(platforms[1].limitState == JointLimitState2D.LowerLimit)
             {
                 upperLimit_secondPlatform = false;
             }
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.48f);
         //3rd platform
         if(!upperLimit_thirdPlatform)
         {
-            JointMotor2D thirdPlatformMotor = platforms[2].motor;
-            thirdPlatformMotor.motorSpeed = 2;
-            platforms[2].motor = thirdPlatformMotor;
+            SetMotorSpeed(3);
             if(platforms[2].limitState == JointLimitState2D.UpperLimit)
             {
                 upperLimit_thirdPlatform = true;
@@ -73,14 +63,25 @@ public class SliderJointController : MonoBehaviour
         }
         else if(upperLimit_thirdPlatform)
         {
-            JointMotor2D thirdPlatformMotor = platforms[2].motor;
-            thirdPlatformMotor.motorSpeed = -2;
-            platforms[2].motor = thirdPlatformMotor;
+            SetNegativeMotorSpeed(3);
             if(platforms[2].limitState == JointLimitState2D.LowerLimit)
             {
                 upperLimit_thirdPlatform = false;
             }
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
     }
+    private void SetMotorSpeed(int indexOfPlatform)
+    {
+        JointMotor2D jointMotor = platforms[indexOfPlatform - 1].motor;
+        jointMotor.motorSpeed = motorSpeed;
+        platforms[indexOfPlatform - 1].motor = jointMotor;
+    }
+    private void SetNegativeMotorSpeed(int indexOfPlatform)
+    {
+        JointMotor2D jointMotor = platforms[indexOfPlatform - 1].motor;
+        jointMotor.motorSpeed = -motorSpeed ;
+        platforms[indexOfPlatform - 1].motor = jointMotor;
+    }
+
 }

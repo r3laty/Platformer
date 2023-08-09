@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterJump : MonoBehaviour
 { 
     private Rigidbody2D playerRb;
     [HideInInspector] public bool isGround;
-    private bool wall;
     [SerializeField] private float _checkRadius;
     private Animator playerAnime;
     private void Awake() 

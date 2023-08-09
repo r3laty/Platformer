@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 //This script is input manager. He is in charge for input from user.
 public class CharacterController : MonoBehaviour
@@ -17,9 +14,6 @@ public class CharacterController : MonoBehaviour
     private bool learnMore;
     [SerializeField] private float walljumpForce = 5;
     [SerializeField] private float jumpForce = 5;
-    [SerializeField] private GameObject aboutItemMenu;
-    [SerializeField] private BringKeyCard keyCardScript;
-    [SerializeField] private TextMeshProUGUI raisedText;
     [HideInInspector] public float horizontal;
     [HideInInspector] public float speed = 5;
     [HideInInspector] public Vector2 movingVec;
@@ -55,23 +49,6 @@ public class CharacterController : MonoBehaviour
         {
             walljump = true;
         }
-
-        //raising text activate
-        if(keyCardScript.pickedUp)
-        {
-            StartCoroutine(RaisingTextActivating());
-            learnMore = true;
-        }
-
-        //about item menu
-        if (learnMore && Input.GetKeyDown(KeyCode.Tab))
-        {
-            aboutItemMenu.SetActive(true);
-        }
-        else if (learnMore && Input.GetKeyUp(KeyCode.Tab))
-        {
-            aboutItemMenu.SetActive(false);
-        }
     }
     private void FixedUpdate() 
     {
@@ -100,18 +77,5 @@ public class CharacterController : MonoBehaviour
             _wallSlide.wall = false;
             walljump = false;
         }
-    }
-    private IEnumerator RaisingTextActivating()
-    {
-        raisedText.gameObject.SetActive(true);
-
-        yield return new WaitForSeconds(1);
-        Vector3 newPosition = new Vector3(-221.9f, -129.7f, 0);
-        Vector2 newScale = new Vector2(209.9684f, 30.1511f);
-        
-        raisedText.text = "ключ карта";
-        raisedText.fontSize = 24;
-        raisedText.transform.localPosition = newPosition;
-        raisedText.rectTransform.sizeDelta = newScale;
     }
 }

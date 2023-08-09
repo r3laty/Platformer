@@ -1,6 +1,3 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
@@ -38,13 +35,13 @@ public class CharacterMovement : MonoBehaviour
 
     public void RunAnimation()
     {
-        if(controller.horizontal > 0.9f && !wallSlide.wall)
+        if(controller.horizontal > 0.01f && !wallSlide.wall)
         {
             characterAnime.SetBool("run", true);
             controller.speed = 8;
         }
 
-        if(controller.horizontal < -0.9 && !wallSlide.wall)
+        if(controller.horizontal < -0.01f && !wallSlide.wall)
         {
             characterAnime.SetBool("run", true);
             controller.speed = 8;

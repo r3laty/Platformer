@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using TMPro.Examples;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 
 public class HangingObstacleComponent : MonoBehaviour
 {
@@ -29,29 +26,33 @@ public class HangingObstacleComponent : MonoBehaviour
         //first object
         if (hingeObjects[0].limitState == JointLimitState2D.LowerLimit)
         {
-            JointMotor2D firstHingeObj = hingeObjects[0].motor;
-            firstHingeObj.motorSpeed = motorSpeed;
-            hingeObjects[0].motor = firstHingeObj;
+            SetMotorSpeed(1);
         }
         else if (hingeObjects[0].limitState == JointLimitState2D.UpperLimit)
         {
-            JointMotor2D firstHingeObj = hingeObjects[0].motor;
-            firstHingeObj.motorSpeed = -motorSpeed;
-            hingeObjects[0].motor = firstHingeObj;
+            SetNegativeMotorSpeed(1);
         }
         //second object
         if (hingeObjects[1].limitState == JointLimitState2D.LowerLimit)
         {
-            JointMotor2D secondHingeObj = hingeObjects[1].motor;
-            secondHingeObj.motorSpeed = motorSpeed;
-            hingeObjects[1].motor = secondHingeObj;
+            SetMotorSpeed(2);
         }
         else if (hingeObjects[1].limitState == JointLimitState2D.UpperLimit)
         {
-            JointMotor2D secondHingeObj = hingeObjects[1].motor;
-            secondHingeObj.motorSpeed = -motorSpeed;
-            hingeObjects[1].motor = secondHingeObj;
+            SetNegativeMotorSpeed(2);
         }
+    }
+    private void SetMotorSpeed(int indexOfItem)
+    {
+        JointMotor2D jointMotor = hingeObjects[indexOfItem - 1].motor;
+        jointMotor.motorSpeed = motorSpeed;
+        hingeObjects[indexOfItem - 1].motor = jointMotor;
+    }
+    private void SetNegativeMotorSpeed(int indexOfItem)
+    {
+        JointMotor2D jointMotor = hingeObjects[indexOfItem - 1].motor;
+        jointMotor.motorSpeed = -motorSpeed;
+        hingeObjects[indexOfItem - 1].motor = jointMotor;
     }
     private void SliderJointObject()
     {
