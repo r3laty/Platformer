@@ -13,6 +13,8 @@ TagManager:
   - Boom
   - KeyCard
   - EndGame
+  - Enemy
+  - Barrier
   layers:
   - Default
   - TransparentFX
@@ -21,9 +23,9 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
-  - 
+  - Enemies
+  - Player
+  - Barrier
   - 
   - 
   - 

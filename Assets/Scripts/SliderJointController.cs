@@ -5,11 +5,13 @@ public class SliderJointController : MonoBehaviour
 {
     [SerializeField] private SliderJoint2D[] platforms;
     [SerializeField] private float motorSpeed = 2f;
+
     private bool upperLimit_firstPlatform;
 
     private bool upperLimit_secondPlatform;
 
     private bool upperLimit_thirdPlatform;
+
     private void Update()       
     {
         StartCoroutine(ChangingMotorSpeed());

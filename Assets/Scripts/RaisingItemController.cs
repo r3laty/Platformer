@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RaisingItemController : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI raisedText;
     [SerializeField] private BringKeyCard keyCardScript;
+    [SerializeField] private TextMeshProUGUI raisedText;
     [SerializeField] private GameObject aboutItemMenu;
     private bool learnMore;
     private void Update()

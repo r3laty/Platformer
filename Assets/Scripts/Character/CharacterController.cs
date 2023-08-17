@@ -1,5 +1,5 @@
 using UnityEngine;
-//This script is input manager. He is in charge for input from user.
+
 public class CharacterController : MonoBehaviour
 {
     private Animator _playerAnime;
@@ -7,13 +7,16 @@ public class CharacterController : MonoBehaviour
     private CharacterJump _jump;
     private CharacterWallSlide _wallSlide;
     private CharacterMovement _movement;
+    
+    private bool _isButtonDown;
     private bool isJumped;
     private bool isExtraJumped;
     private bool allow;
     private bool walljump;
-    private bool learnMore;
+
     [SerializeField] private float walljumpForce = 5;
     [SerializeField] private float jumpForce = 5;
+    
     [HideInInspector] public float horizontal;
     [HideInInspector] public float speed = 5;
     [HideInInspector] public Vector2 movingVec;
@@ -28,24 +31,26 @@ public class CharacterController : MonoBehaviour
     }
     private void Update() 
     {
+        _isButtonDown = Input.GetButtonDown("Jump");
+
         _movement.RunAnimation();
         
         //_jump
-        if (Input.GetKeyDown(KeyCode.Space) && _jump.isGround)
+        if (_isButtonDown && _jump.isGround)
         {
             _playerAnime.SetBool("jump", true);
             isJumped = true;
             allow = true;
         }
         //double _jump
-        else if(allow && Input.GetKeyDown(KeyCode.Space))
+        else if(allow && _isButtonDown)
         {
             _playerAnime.SetBool("doubleJump", true);
             isExtraJumped = true;
             allow = false;
         }
         //wall _jump
-        else if(Input.GetKeyDown(KeyCode.Space) && _wallSlide.wall)
+        else if(_isButtonDown && _wallSlide.wall)
         {
             walljump = true;
         }

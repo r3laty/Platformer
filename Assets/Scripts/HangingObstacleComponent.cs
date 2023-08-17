@@ -7,7 +7,14 @@ public class HangingObstacleComponent : MonoBehaviour
     [SerializeField] private float motorSpeed = 150;
     [SerializeField] private List<HingeJoint2D> hingeObjects;
     [SerializeField] private GameObject mainCharacter;
+    private SpriteRenderer characterSprite;
+    private CharacterController characterController;
     [HideInInspector] public bool character;
+    private void Awake()
+    {
+        characterSprite = mainCharacter.GetComponent<SpriteRenderer>();
+        characterController = mainCharacter.GetComponent<CharacterController>();
+    }
     private void Update()
     {
         CouldCharacterGo();
@@ -16,9 +23,11 @@ public class HangingObstacleComponent : MonoBehaviour
     }
     private void CouldCharacterGo()
     {
-        if(character)
+        if (character)
         {
-            Destroy(mainCharacter);
+            //Destroy(mainCharacter);
+            characterSprite.enabled = false;
+            characterController.enabled = false;
         }
     }
     private void HingeJointObjects()
