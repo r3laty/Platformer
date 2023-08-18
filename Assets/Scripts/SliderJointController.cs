@@ -54,24 +54,6 @@ public class SliderJointController : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(0.48f);
-        //3rd platform
-        if(!upperLimit_thirdPlatform)
-        {
-            SetMotorSpeed(3);
-            if(platforms[2].limitState == JointLimitState2D.UpperLimit)
-            {
-                upperLimit_thirdPlatform = true;
-            }   
-        }
-        else if(upperLimit_thirdPlatform)
-        {
-            SetNegativeMotorSpeed(3);
-            if(platforms[2].limitState == JointLimitState2D.LowerLimit)
-            {
-                upperLimit_thirdPlatform = false;
-            }
-        }
-        yield return new WaitForSeconds(1.5f);
     }
     private void SetMotorSpeed(int indexOfPlatform)
     {

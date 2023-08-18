@@ -24,7 +24,9 @@ public class EnemyHealth : MonoBehaviour
         if (!_isAlive)
         {
             _currentHp = maxHp;
-            Destroy(gameObject);
+            Destroy(gameObject.GetComponent<SpriteRenderer>());
+            Destroy(gameObject.GetComponent<BoxCollider2D>());
+
         }
     }
 

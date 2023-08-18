@@ -7,6 +7,7 @@ public class CharacterHealth : MonoBehaviour
     private BoxCollider2D _characterCollider;
     private GameObject _characterLayerMask;
     private bool _isAlive;
+
     public float maxHp;
     private void Awake()
     {
