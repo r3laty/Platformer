@@ -5,7 +5,6 @@ public class CharacterHealth : MonoBehaviour
     private SpriteRenderer _characterSprite;
     private CharacterController _characterController;
     private BoxCollider2D _characterCollider;
-    private GameObject _characterLayerMask;
     private bool _isAlive;
 
     public float maxHp;
@@ -22,7 +21,6 @@ public class CharacterHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         maxHp = maxHp - damage;
-        Debug.Log(maxHp + " character hp");
         CheckIsAlive();
     }
     private void CheckIsAlive()
@@ -33,8 +31,6 @@ public class CharacterHealth : MonoBehaviour
         }
         if (!_isAlive)
         {
-            //Destroy(gameObject);
-            gameObject.layer = 0;
             _characterSprite.enabled = false;
             _characterController.enabled = false;
             _characterCollider.enabled = false;

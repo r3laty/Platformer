@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +22,5 @@ public class CharacterHpBar : MonoBehaviour
     {
         hpBarText.text = _characterHealth.maxHp.ToString();
         hpBar.value = _characterHealth.maxHp;
-        Debug.Log(_characterHealth.maxHp + " health in hp bar");
     }
 }

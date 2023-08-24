@@ -15,6 +15,7 @@ TagManager:
   - EndGame
   - Enemy
   - Barrier
+  - Water
   layers:
   - Default
   - TransparentFX

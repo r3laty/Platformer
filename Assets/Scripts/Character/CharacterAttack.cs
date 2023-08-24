@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CharacterAttack : MonoBehaviour
 {
@@ -14,12 +11,8 @@ public class CharacterAttack : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(uiController.isStarted + " is started character attack");
-        if (uiController.isStarted)
-        {
         _isAttacking = Input.GetButtonDown("Fire1");
         PunchAnimation();
-        }
     }
     private void DealDamage()
     {

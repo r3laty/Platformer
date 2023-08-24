@@ -5,21 +5,18 @@ public class EndGame : MonoBehaviour
 {
     [SerializeField] private BringKeyCard key;
     [SerializeField] private GameObject endGamePic;
-    [SerializeField] private GameObject dieMenu;
-    private bool isEndTrigger;
+    [HideInInspector] public bool _theEnd;
+    private bool _isEndTrigger;
 
     private void Update()
     {
-        if (isEndTrigger)
-        {
-            dieMenu.SetActive(false);
-        }
         StartCoroutine(EndOfTheGame());
     }
     private IEnumerator EndOfTheGame()
     {
-        if(key.key && isEndTrigger)
+        if(key.key && _isEndTrigger)
         {
+            _theEnd = true;
             yield return new WaitForSeconds(1);
             endGamePic.SetActive(true);
         }   
@@ -28,14 +25,14 @@ public class EndGame : MonoBehaviour
     {
         if(collision.CompareTag("EndGame"))
         {
-            isEndTrigger = true;
+            _isEndTrigger = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("EndGame"))
         {
-            isEndTrigger = false;
+            _isEndTrigger = false;
         }
     }
 }

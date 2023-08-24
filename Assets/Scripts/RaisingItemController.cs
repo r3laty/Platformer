@@ -31,13 +31,11 @@ public class RaisingItemController : MonoBehaviour
         raisedText.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(1);
-        Vector3 newPosition = new Vector3(-221.9f, -129.7f, 0);
-        Vector2 newScale = new Vector2(209.9684f, 30.1511f);
+        Vector3 newPosition = new Vector3(-823.8573f, -511.7109f, 0);
 
         raisedText.text = "ключ карта";
-        raisedText.fontSize = 24;
+        raisedText.fontSize = 35;
         raisedText.transform.localPosition = newPosition;
-        raisedText.rectTransform.sizeDelta = newScale;
     }
 
 }

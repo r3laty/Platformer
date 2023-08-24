@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,11 +8,6 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private List<Animator> enemyAnimes;
     [SerializeField] private List<GameObject> enemyObjects;
     private List<bool> _isMovingList = new List<bool> { false, false };
-
-    private void Awake()
-    {
-        
-    }
     private void Update()
     {
         StartPatrolAnimation();
@@ -75,7 +69,6 @@ public class EnemyPatrol : MonoBehaviour
     }
     private void Flip(int indexOfEnemy)
     {
-
         if (_isMovingList[0])
         {
             enemyObjects[indexOfEnemy].GetComponent<SpriteRenderer>().flipX = false;

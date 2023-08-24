@@ -10,8 +10,6 @@ public class SliderJointController : MonoBehaviour
 
     private bool upperLimit_secondPlatform;
 
-    private bool upperLimit_thirdPlatform;
-
     private void Update()       
     {
         StartCoroutine(ChangingMotorSpeed());

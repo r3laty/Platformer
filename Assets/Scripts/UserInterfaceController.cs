@@ -4,8 +4,6 @@ using UnityEngine.UI;
 
 public class UserInterfaceController : MonoBehaviour
 {
-    [SerializeField] private Slider soundControlSlider;
-    [SerializeField] private AudioSource mainAudio;
     [SerializeField] private GameObject characterGO;
     [SerializeField] private GameObject dieMenu;
 
@@ -15,20 +13,19 @@ public class UserInterfaceController : MonoBehaviour
     private CharacterController _characterController;
     private Rigidbody2D _rigidbody;
     private CharacterHealth _characterHealth;
-    private float _defaultMusicVolume = 0.5f;
+    private EndGame _endGame;
     private void Awake()
     {
+        _endGame = characterGO.GetComponent<EndGame>();
         _rigidbody = characterGO.GetComponent<Rigidbody2D>();
         _characterController = characterGO.GetComponent<CharacterController>();
         _characterAnime = characterGO.GetComponent<Animator>();
         _characterHealth = characterGO.GetComponent <CharacterHealth>();
     }
-    private void Start()
-    {
-        soundControlSlider.value = _defaultMusicVolume;
-        mainAudio.volume = _defaultMusicVolume;
-        FreezeTime();
-    }
+    //private void Start()
+    //{
+    //    FreezeTime();
+    //}
     public void StartButtonClick()
     {
         UnfreezeTime();
@@ -47,7 +44,7 @@ public class UserInterfaceController : MonoBehaviour
     }
     public void Die()
     {
-        if(_characterHealth.maxHp <= 0 || characterGO.transform.position.y < -10)
+        if(_characterHealth.maxHp <= 0 || characterGO.transform.position.y < -10 && !_endGame._theEnd)
         {
             dieMenu.SetActive(true);
             Destroy(characterGO);
@@ -56,7 +53,6 @@ public class UserInterfaceController : MonoBehaviour
     private void Update()
     {
         Die(); 
-        mainAudio.volume = soundControlSlider.value;
     }
     private void FreezeTime()
     {
