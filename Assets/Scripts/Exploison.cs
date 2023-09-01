@@ -7,21 +7,22 @@ public class Exploison : MonoBehaviour
     [SerializeField] private BoxCollider2D bunchOfDynamiteCollider;
     [SerializeField] private GameObject bunchOfDynamiteGO;
     [SerializeField] private Animator exploisonAnime;
-    private bool triggerOfExplosion;
-    private LeverSwitch _leverSwitch;
+    [SerializeField] private LeverSwitch leverSwitch;
+    private bool _triggerOfExplosion;
     private Exploison _exploisonScript;
     private void Awake()
     {
-        _leverSwitch = GetComponent<LeverSwitch>();
         _exploisonScript = GetComponent<Exploison>();
     }
     private void Update() 
     {
         StartCoroutine(Boom());
+
+        if (leverSwitch.toggleSwitch) Debug.Log("toggle switch");
     }
     private IEnumerator Boom()
     {
-        if(_leverSwitch.toggleSwitch && triggerOfExplosion)
+        if(leverSwitch.toggleSwitch && _triggerOfExplosion)
         {
             exploisonAnime.SetBool("Boom", true);
             bunchOfDynamiteGO.transform.position = new Vector3(31.5f, 9.08f, 0);
@@ -35,22 +36,25 @@ public class Exploison : MonoBehaviour
             Destroy(gameObject.GetComponent<Exploison>());
         }   
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("TriggerOfExplosion"))
+        {
+            _triggerOfExplosion = true;
+            Debug.Log("Worked");
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("TriggerOfExplosion"))
+        {
+            _triggerOfExplosion = false;
+            Debug.Log("Doesnt work");
+        }
+    }
     private void OnDestroy()
     {
         Destroy(_exploisonScript);
-    }
-    private void OnTriggerEnter2D(Collider2D other) 
-    {
-        if(other.CompareTag("TriggerOfExplosion"))
-        {
-            triggerOfExplosion = true;
-        }   
-    }
-    private void OnTriggerExit2D(Collider2D other) 
-    {
-        if(other.CompareTag("TriggerOfExplosion"))
-        {
-            triggerOfExplosion = false;
-        }    
     }
 }

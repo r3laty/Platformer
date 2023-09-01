@@ -2,35 +2,28 @@ using UnityEngine;
 
 public class LadderMovement : MonoBehaviour
 { 
-    private float vertical;
-    private bool isLadder;
-    private bool isClimbing;
-    private CharacterMovement movement;
-    private CharacterController controller;
-    [SerializeField] private float _climbingSpeed = 7;
+    private float _vertical;
+    private bool _isLadder;
+    private bool _isClimbing;
+    [SerializeField] private float climbingSpeed = 7;
     [SerializeField] private Rigidbody2D playerRb; 
 
-    private void Awake() 
-    {
-        movement = GetComponent<CharacterMovement>();   
-        controller = GetComponent<CharacterController>();
-    }
     private void Update()
     {
-        vertical = Input.GetAxis("Vertical");
+        _vertical = Input.GetAxis("Vertical");
 
-        if(isLadder && Input.GetKeyDown(KeyCode.E))
+        if(_isLadder && Input.GetKeyDown(KeyCode.E))
         {
-            isClimbing = true;
+            _isClimbing = true;
         }
     }
     private void FixedUpdate() 
     {
-        if(isClimbing)
+        if(_isClimbing)
         {
             playerRb.gravityScale = 0;
 
-            playerRb.velocity = new Vector2(0, vertical * _climbingSpeed);
+            playerRb.velocity = new Vector2(0, _vertical * climbingSpeed);
             
         }
         else
@@ -40,17 +33,17 @@ public class LadderMovement : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.CompareTag("Ladder"))
+        if(other.CompareTag("Player"))
         {
-            isLadder = true;
+                _isLadder = true;
         }   
     }
     private void OnTriggerExit2D(Collider2D other) 
     {
-        if(other.CompareTag("Ladder"))
+        if(other.CompareTag("Player"))
         {
-            isLadder = false;
-            isClimbing = false;
+            _isLadder = false;
+            _isClimbing = false;
         }   
     }
 }

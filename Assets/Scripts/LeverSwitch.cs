@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class LeverSwitch : MonoBehaviour
 {
-    bool isLever;
+    bool _isCharacter;
     [HideInInspector] public bool toggleSwitch;
     [SerializeField] private Animator leverAnimator;
 
     private void Update() 
     {
-        if(isLever && Input.GetKeyDown(KeyCode.E))
+        if(_isCharacter && Input.GetKeyDown(KeyCode.E))
         {
             leverAnimator.SetBool("LeverOn", true);
             toggleSwitch = true;
@@ -16,16 +16,16 @@ public class LeverSwitch : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other) 
     {
-        if(other.gameObject.CompareTag("Lever"))
+        if(other.gameObject.CompareTag("Player"))
         {
-            isLever = true;
+            _isCharacter = true;
         }   
     }
     private void OnCollisionExit2D(Collision2D other) 
     {
-        if(other.gameObject.CompareTag("Lever"))
+        if(other.gameObject.CompareTag("Player"))
         { 
-            isLever = false;
+            _isCharacter = false;
         }     
     }
 }

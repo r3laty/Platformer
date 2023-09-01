@@ -133,22 +133,17 @@ GameObject:
   m_Component:
   - component: {fileID: 7690875}
   - component: {fileID: 7690874}
+  - component: {fileID: 7690876}
   - component: {fileID: 7690873}
   - component: {fileID: 7690872}
   - component: {fileID: 7690871}
   - component: {fileID: 7690878}
   - component: {fileID: 7690879}
-  - component: {fileID: 7690882}
-  - component: {fileID: 7690883}
-  - component: {fileID: 7690884}
-  - component: {fileID: 7690885}
-  - component: {fileID: 7690887}
   - component: {fileID: 7690892}
   - component: {fileID: 7690891}
   - component: {fileID: 7690888}
-  - component: {fileID: 7690893}
-  - component: {fileID: 7690876}
   - component: {fileID: 7690877}
+  - component: {fileID: 7690894}
   - component: {fileID: 7690886}
   m_Layer: 8
   m_Name: Player
@@ -338,62 +333,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wall: 0
   slideSpeed: -2
---- !u!114 &7690882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7690870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc73ffe31f179574fb4ef62bde796529, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _climbingSpeed: 7
-  playerRb: {fileID: 7690873}
---- !u!114 &7690883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7690870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfc600675b8644e47bb7737458d154b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toggleSwitch: 0
-  leverAnimator: {fileID: 1366845262}
---- !u!114 &7690884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7690870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3faa5fb7eeca3e49a5d708654eedd65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wall: {fileID: 1546715960}
-  bunchOfDynamiteCollider: {fileID: 657159656}
-  bunchOfDynamiteGO: {fileID: 657159655}
-  exploisonAnime: {fileID: 657159660}
---- !u!114 &7690885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7690870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eab6a43af28f56247bdec1bab4fa3e4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7690886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,21 +348,6 @@ MonoBehaviour:
   key: {fileID: 1320768569}
   endGamePic: {fileID: 1949430027}
   _theEnd: 0
---- !u!114 &7690887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7690870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e43ee2cd5b1104a865573f1a86d57b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyCardScript: {fileID: 1320768569}
-  raisedText: {fileID: 564285329}
-  aboutItemMenu: {fileID: 91600954}
 --- !u!114 &7690888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,8 +390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dbefebffe0b4be45910b3a935741ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 100
---- !u!114 &7690893
+  maxHp: 20
+--- !u!114 &7690894
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -476,10 +400,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7690870}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bad0c73dd67a38542b381f8f82ab1687, type: 3}
+  m_Script: {fileID: 11500000, guid: d3faa5fb7eeca3e49a5d708654eedd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  wall: {fileID: 1546715960}
+  bunchOfDynamiteCollider: {fileID: 657159656}
+  bunchOfDynamiteGO: {fileID: 657159655}
+  exploisonAnime: {fileID: 657159660}
+  leverSwitch: {fileID: 1366845264}
 --- !u!1 &9299914
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,6 +420,7 @@ GameObject:
   - component: {fileID: 9299916}
   - component: {fileID: 9299915}
   - component: {fileID: 9299918}
+  - component: {fileID: 9299919}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -564,6 +493,21 @@ MonoBehaviour:
   characterGO: {fileID: 7690870}
   dieMenu: {fileID: 437843804}
   isStarted: 0
+--- !u!114 &9299919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9299914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e43ee2cd5b1104a865573f1a86d57b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyCardScript: {fileID: 1320768569}
+  raisedText: {fileID: 564285329}
+  aboutItemMenu: {fileID: 91600954}
 --- !u!1 &30549308
 GameObject:
   m_ObjectHideFlags: 0
@@ -41958,6 +41902,7 @@ GameObject:
   - component: {fileID: 726438343}
   - component: {fileID: 726438342}
   - component: {fileID: 726438341}
+  - component: {fileID: 726438344}
   m_Layer: 0
   m_Name: Water (1)
   m_TagString: Untagged
@@ -42034,6 +41979,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &726438344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726438340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bad0c73dd67a38542b381f8f82ab1687, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  characterHealth: {fileID: 7690892}
 --- !u!1 &730591537
 GameObject:
   m_ObjectHideFlags: 0
@@ -65734,7 +65693,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 20
 --- !u!222 &1208489093
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -67138,6 +67097,7 @@ GameObject:
   - component: {fileID: 1366845260}
   - component: {fileID: 1366845262}
   - component: {fileID: 1366845263}
+  - component: {fileID: 1366845264}
   m_Layer: 0
   m_Name: Lever
   m_TagString: Lever
@@ -67258,6 +67218,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.39580733, y: 1.222358}
   m_EdgeRadius: 0
+--- !u!114 &1366845264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366845259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfc600675b8644e47bb7737458d154b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggleSwitch: 0
+  leverAnimator: {fileID: 1366845262}
 --- !u!1 &1386104696
 GameObject:
   m_ObjectHideFlags: 0
@@ -67352,7 +67326,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1399073463}
   - component: {fileID: 1399073462}
-  - component: {fileID: 1399073464}
   m_Layer: 0
   m_Name: NormalLadder
   m_TagString: Ladder
@@ -67420,39 +67393,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399073461}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 32.038326, y: 15.92416, z: 0.026041666}
+  m_LocalPosition: {x: 0.22999763, y: -2.4986992, z: 0.026041666}
   m_LocalScale: {x: 3.9015057, y: 5.9268856, z: 3.9015057}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1600024604}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1399073464
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1399073461}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.05947104, y: -0.037884817}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.25}
-    newSize: {x: 1, y: 1.25}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.37703997, y: 1.0339124}
-  m_EdgeRadius: 0
 --- !u!1 &1420019771
 GameObject:
   m_ObjectHideFlags: 0
@@ -68410,6 +68357,7 @@ GameObject:
   - component: {fileID: 1502390773}
   - component: {fileID: 1502390772}
   - component: {fileID: 1502390771}
+  - component: {fileID: 1502390774}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -68486,6 +68434,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1502390774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502390770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bad0c73dd67a38542b381f8f82ab1687, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  characterHealth: {fileID: 7690892}
 --- !u!1 &1505136631
 GameObject:
   m_ObjectHideFlags: 0
@@ -68807,7 +68769,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1541178654}
   - component: {fileID: 1541178653}
-  - component: {fileID: 1541178655}
   m_Layer: 0
   m_Name: BraikedLadder
   m_TagString: Untagged
@@ -68875,39 +68836,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1541178652}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 32.038326, y: 10.182859, z: 0.026041666}
+  m_LocalPosition: {x: 0.22999763, y: -8.24, z: 0.026041666}
   m_LocalScale: {x: 3.9015057, y: 5.588765, z: 3.9015057}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1600024604}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1541178655
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541178652}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.059471034, y: 0.03507948}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.25}
-    newSize: {x: 1, y: 1.25}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.37703997, y: 1.179841}
-  m_EdgeRadius: 0
 --- !u!1 &1546715960
 GameObject:
   m_ObjectHideFlags: 0
@@ -69207,6 +69142,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1600024604}
+  - component: {fileID: 1600024605}
+  - component: {fileID: 1600024606}
   m_Layer: 0
   m_Name: Ladder
   m_TagString: Untagged
@@ -69222,7 +69159,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1600024603}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.618327, y: 0.98714083, z: -0.026041666}
+  m_LocalPosition: {x: 27.19, y: 19.41, z: -0.026041666}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -69231,6 +69168,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1600024605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600024603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc73ffe31f179574fb4ef62bde796529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  climbingSpeed: 7
+  playerRb: {fileID: 7690873}
+--- !u!61 &1600024606
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600024603}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.043967247, y: -2.6063118}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.4396648, y: 5.706234}
+  m_EdgeRadius: 0
 --- !u!1 &1620286050
 GameObject:
   m_ObjectHideFlags: 0

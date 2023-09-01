@@ -5,16 +5,12 @@ using UnityEngine;
 public class DamageOfWater : MonoBehaviour
 {
     [SerializeField] private float damage = 1;
-    private CharacterHealth _characterHealth;
+    [SerializeField] private CharacterHealth characterHealth;
     private bool _drowned;
     private Coroutine _damageDealCoroutine;
-    private void Awake()
-    {
-        _characterHealth = GetComponent<CharacterHealth>();
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Water"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             _drowned = true;
             _damageDealCoroutine = StartCoroutine(DealDamage());
@@ -22,7 +18,7 @@ public class DamageOfWater : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Water"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             if (_damageDealCoroutine != null)
             {
@@ -36,7 +32,7 @@ public class DamageOfWater : MonoBehaviour
     {
         while (_drowned)
         {
-            _characterHealth.maxHp = _characterHealth.maxHp - damage;
+            characterHealth.maxHp = characterHealth.maxHp - damage;
             yield return new WaitForSeconds(2);
         }
     }
