@@ -35,7 +35,7 @@ public class LadderMovement : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-                _isLadder = true;
+            _isLadder = true;
         }   
     }
     private void OnTriggerExit2D(Collider2D other) 

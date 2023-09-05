@@ -24,6 +24,7 @@ public class Exploison : MonoBehaviour
     {
         if(leverSwitch.toggleSwitch && _triggerOfExplosion)
         {
+            Debug.Log("Coroutine started");
             exploisonAnime.SetBool("Boom", true);
             bunchOfDynamiteGO.transform.position = new Vector3(31.5f, 9.08f, 0);
             bunchOfDynamiteGO.transform.localScale = new Vector3(0.3207118f, 0.3207118f, 0.3207118f);
@@ -32,8 +33,8 @@ public class Exploison : MonoBehaviour
 
             bunchOfDynamiteCollider.isTrigger = false;
             Destroy(wall);
-            Destroy(GameObject.FindGameObjectWithTag("Boom"));
-            Destroy(gameObject.GetComponent<Exploison>());
+            Destroy(bunchOfDynamiteGO);
+            Destroy(_exploisonScript);
         }   
     }
 

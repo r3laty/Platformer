@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class EndGame : MonoBehaviour
 {
+    [SerializeField] private GameObject dieMenu;
     [SerializeField] private BringKeyCard key;
-    [SerializeField] private GameObject endGamePic;
-    [HideInInspector] public bool _theEnd;
+    [SerializeField] private GameObject passedSuccessfully;
+    [SerializeField] private GameObject passedUnsussefully;    
     private bool _isEndTrigger;
 
     private void Update()
@@ -16,10 +17,14 @@ public class EndGame : MonoBehaviour
     {
         if(key.key && _isEndTrigger)
         {
-            _theEnd = true;
             yield return new WaitForSeconds(1);
-            endGamePic.SetActive(true);
-        }   
+            passedSuccessfully.SetActive(true);
+        }
+        else if(!key.key && _isEndTrigger)
+        {
+            yield return new WaitForSeconds(1);
+            passedUnsussefully.SetActive(true);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
