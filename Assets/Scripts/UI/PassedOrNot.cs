@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class PassedOrNot : UserInterfaceController
 {
     [Header("Use in currrent script")]
-    [SerializeField] private GameObject dontDestroyOnLoadObject;
+    private GameObject dontDestroyOnLoadObject;
     [SerializeField] private int mainMenuBuildIndex;
     public void YesButton()
     {

@@ -7,7 +7,6 @@ public class CharacterAttack : MonoBehaviour
     [SerializeField] private Animator characterAnime;
     private float _rayCastDistance = 100f;
     private bool _isAttacking;
-    [SerializeField] private UserInterfaceController uiController;
 
     private void Update()
     {

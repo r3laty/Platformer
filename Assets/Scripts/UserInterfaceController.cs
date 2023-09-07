@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class UserInterfaceController : MonoBehaviour
 {
     [SerializeField] private GameObject characterGO;
-    [SerializeField] private GameObject dieMenu;
 
     [HideInInspector] public bool isStarted;
 
@@ -33,14 +32,13 @@ public class UserInterfaceController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    private void FreezeTime()
+    public void FreezeTime()
     {
         isStarted = false;
-        //_rigidbody.velocity = Vector2.zero;
         _characterController.enabled = false;
         _characterAnime.enabled = false;
     }
-    private void UnfreezeTime()
+    public void UnfreezeTime()
     {
         isStarted = true;
         _characterController.enabled = true;

@@ -5,6 +5,7 @@ public class CharacterDie : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera mainCinemachine;
     [SerializeField] private GameObject dieMenu;
+    [SerializeField] private Transform playerTransform;
     
     private CharacterController _characterController;
     private CharacterHealth _characterHealth;
@@ -20,12 +21,12 @@ public class CharacterDie : MonoBehaviour
 
     private void Update()
     {
-        if (_characterHealth.maxHp <= 0)
+        if (_characterHealth.maxHp <= 0 || playerTransform.position.y < -10)
         {
             Die();
         }
     }
-    private void Die()
+    public void Die()
     {
         mainCinemachine.enabled = false;
         _characterController.enabled = false;

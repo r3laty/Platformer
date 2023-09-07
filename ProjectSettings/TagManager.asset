@@ -16,6 +16,8 @@ TagManager:
   - Enemy
   - Barrier
   - Water
+  - Spikes
+  - TheEnd
   layers:
   - Default
   - TransparentFX
