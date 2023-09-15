@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class EndGame : MonoBehaviour
 {
-    [SerializeField] private GameObject dieMenu;
     [SerializeField] private BringKeyCard key;
     [SerializeField] private GameObject passedSuccessfully;
     [SerializeField] private GameObject passedUnsussefully;    

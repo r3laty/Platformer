@@ -20,7 +20,7 @@ public class EnemyAttack : MonoBehaviour
         if (_canAttack && PlayerInSight())
         {
             StartCoroutine(AttackCoolDown());
-            Attack();
+            StartCoroutine(Attack());
         }
     }
     private IEnumerator AttackCoolDown()
@@ -35,8 +35,9 @@ public class EnemyAttack : MonoBehaviour
         RaycastHit2D hit_left = Physics2D.Raycast(transform.position, Vector2.left, raycastDistance, playerLayerMask);
         return hit_right.collider != null || hit_left.collider != null;
     }
-    private void Attack()
+    private IEnumerator Attack()
     {
+        yield return new WaitForSeconds(_coolDownTime);
         _enemyAnime.SetTrigger("Attack");
         characterHealth.TakeDamage(damage);
     }

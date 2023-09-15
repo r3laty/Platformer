@@ -17,14 +17,11 @@ public class Exploison : MonoBehaviour
     private void Update() 
     {
         StartCoroutine(Boom());
-
-        if (leverSwitch.toggleSwitch) Debug.Log("toggle switch");
     }
     private IEnumerator Boom()
     {
         if(leverSwitch.toggleSwitch && _triggerOfExplosion)
         {
-            Debug.Log("Coroutine started");
             exploisonAnime.SetBool("Boom", true);
             bunchOfDynamiteGO.transform.position = new Vector3(31.5f, 9.08f, 0);
             bunchOfDynamiteGO.transform.localScale = new Vector3(0.3207118f, 0.3207118f, 0.3207118f);

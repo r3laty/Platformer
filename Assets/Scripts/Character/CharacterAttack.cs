@@ -5,7 +5,7 @@ public class CharacterAttack : MonoBehaviour
     public float damage = 10;
     [SerializeField] private EnemyHealth _enemyHealth;
     [SerializeField] private Animator characterAnime;
-    private float _rayCastDistance = 100f;
+    private float _rayCastDistance = 2;
     private bool _isAttacking;
 
     private void Update()

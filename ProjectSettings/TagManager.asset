@@ -18,6 +18,8 @@ TagManager:
   - Water
   - Spikes
   - TheEnd
+  - TriggerOfRepairGuide
+  - TriggerOfJoke
   layers:
   - Default
   - TransparentFX
@@ -29,7 +31,7 @@ TagManager:
   - Enemies
   - Player
   - Script
-  - 
+  - Enemy
   - 
   - 
   - 

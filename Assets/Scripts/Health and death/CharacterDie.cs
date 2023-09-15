@@ -21,7 +21,7 @@ public class CharacterDie : MonoBehaviour
 
     private void Update()
     {
-        if (_characterHealth.maxHp <= 0 || playerTransform.position.y < -10)
+        if (_characterHealth.maxHp <= 0 || playerTransform.position.y < -20)
         {
             Die();
         }
