@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class EndCheck : MonoBehaviour
+public class LvlEndCheck : MonoBehaviour
 {
     [SerializeField] [FormerlySerializedAs("passMenu")] private GameObject winMenu;
     [HideInInspector] public bool gameCompleted;
@@ -15,7 +15,6 @@ public class EndCheck : MonoBehaviour
         if (collision.gameObject.CompareTag("Finish"))
         {
             gameCompleted = true;
-            Debug.Log("Game completed");
         }
     }
 }

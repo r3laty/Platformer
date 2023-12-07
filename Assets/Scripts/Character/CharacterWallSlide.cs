@@ -5,6 +5,7 @@ public class CharacterWallSlide : MonoBehaviour
     private CharacterController _controller;
     private CharacterMovement _movement;
     private Animator _playerAnime;
+
     [HideInInspector] public bool wall;
     public float slideSpeed = 2;
 

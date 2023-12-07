@@ -6,9 +6,9 @@ public class SliderJointController : MonoBehaviour
     [SerializeField] private SliderJoint2D[] platforms;
     [SerializeField] private float motorSpeed = 2f;
 
-    private bool upperLimit_firstPlatform;
+    private bool _upperLimitFirstPlatform;
+    private bool _upperLimitSecondPlatform;
 
-    private bool upperLimit_secondPlatform;
 
     private void Update()       
     {
@@ -17,38 +17,38 @@ public class SliderJointController : MonoBehaviour
     private IEnumerator ChangingMotorSpeed()
     {
         //1st platform
-        if(!upperLimit_firstPlatform)
+        if(!_upperLimitFirstPlatform)
         {
             SetMotorSpeed(1);
             if(platforms[0].limitState == JointLimitState2D.UpperLimit)
             {
-                upperLimit_firstPlatform = true;
+                _upperLimitFirstPlatform = true;
             }
         }
-        else if(upperLimit_firstPlatform)
+        else if(_upperLimitFirstPlatform)
         {
             SetNegativeMotorSpeed(1);
             if(platforms[0].limitState == JointLimitState2D.LowerLimit)
             {
-                upperLimit_firstPlatform = false;
+                _upperLimitFirstPlatform = false;
             }
         }
         yield return new WaitForSeconds(1.2f);
         //2nd platform
-        if(!upperLimit_secondPlatform)
+        if(!_upperLimitSecondPlatform)
         {
             SetMotorSpeed(2);
             if(platforms[1].limitState == JointLimitState2D.UpperLimit)
             {
-                upperLimit_secondPlatform = true;
+                _upperLimitSecondPlatform = true;
             }   
         }
-        else if(upperLimit_secondPlatform)
+        else if(_upperLimitSecondPlatform)
         {
             SetNegativeMotorSpeed(2);
             if(platforms[1].limitState == JointLimitState2D.LowerLimit)
             {
-                upperLimit_secondPlatform = false;
+                _upperLimitSecondPlatform = false;
             }
         }
         yield return new WaitForSeconds(0.48f);

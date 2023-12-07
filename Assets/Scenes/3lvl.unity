@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winMenu: {fileID: 2888719711742027588}
+  gameCompleted: 0
 --- !u!1 &481742015
 GameObject:
   m_ObjectHideFlags: 0
@@ -6679,7 +6680,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -8394,10 +8395,10 @@ Tilemap:
     m_Data: {fileID: 1610294220, guid: 7d57abe770d676e48b4b8f9947980778, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: -113589340, guid: 7d57abe770d676e48b4b8f9947980778, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -113589340, guid: 7d57abe770d676e48b4b8f9947980778, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 797
     m_Data:
@@ -9914,7 +9915,7 @@ GameObject:
   - component: {fileID: 1796584722}
   - component: {fileID: 1796584721}
   - component: {fileID: 1796584723}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MainGrafics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11734,6 +11735,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGround: 0
   checkRadius: 1
+  groundCheck: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!95 &1120535213711161494
 Animator:
   serializedVersion: 4
@@ -11784,6 +11789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walljumpForce: 5
   jumpForce: 5
+  maxJumps: 2
   horizontal: 0
   speed: 5
   movingVec: {x: 0, y: 0}

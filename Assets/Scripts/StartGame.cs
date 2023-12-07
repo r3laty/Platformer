@@ -4,6 +4,6 @@ public class StartGame : MonoBehaviour
 {
     private void Start()
     {
-        Time.timeScale = 1;   
+        Time.timeScale = 1;
     }
 }

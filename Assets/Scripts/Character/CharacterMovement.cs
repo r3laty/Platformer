@@ -35,16 +35,14 @@ public class CharacterMovement : MonoBehaviour
 
     public void RunAnimation()
     {
-        if(controller.horizontal > 0.01f && !wallSlide.wall)
+        if(controller.horizontal > 0 && !wallSlide.wall)
         {
             characterAnime.SetBool("run", true);
-            controller.speed = 8;
         }
 
-        if(controller.horizontal < -0.01f && !wallSlide.wall)
+        if(controller.horizontal < 0 && !wallSlide.wall)
         {
             characterAnime.SetBool("run", true);
-            controller.speed = 8;
         }
         if(controller.horizontal == 0)
         {
@@ -55,8 +53,6 @@ public class CharacterMovement : MonoBehaviour
                     characterAnime.SetBool(parameter.name, false);
                 }
             }
-
-            controller.speed = 8;
         }
     }
 }

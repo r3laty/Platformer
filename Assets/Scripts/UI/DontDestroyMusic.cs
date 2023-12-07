@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class DontDestroyMusic : MonoBehaviour
 {
-    private DontDestroyMusic m_Instance;
+    private DontDestroyMusic _mInstance;
     private void Start()
     {
-        if (m_Instance != null)
+        if (_mInstance != null)
         {
             Destroy(gameObject);
         }
         else
         {
-            m_Instance = this;
+            _mInstance = this;
             DontDestroyOnLoad(gameObject);
         }
     }
